@@ -7,7 +7,7 @@ import { useAuth } from './useAuth.ts'
 export const useUser = (nickName?: string) => {
   const resolvedNickName = nickName
   const { user: loggedUser } = useAuth()
-  const endpoint = `${API.USER_BY_NICKNAME(resolvedNickName ?? loggedUser?.nickName ?? '')}`
+  const endpoint = `${API.USER_BY_NICKNAME(resolvedNickName ?? loggedUser?.nickName ?? 'empty')}`
 
   const { data, error, isLoading } = useSWR<User>(endpoint, fetcher)
 

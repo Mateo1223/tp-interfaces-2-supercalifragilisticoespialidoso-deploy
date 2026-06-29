@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { Avatar, Chip } from '@heroui/react'
 import { usePageTitle } from '../../hooks/usePageTitle.ts'
@@ -14,13 +15,14 @@ const PostDetail = () => {
   usePageTitle('Publicación')
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const { post } = usePost(id!)
+  const { post, isLoading } = usePost(id!)
   const { user } = useAuth()
 
-  if (!post) {
-    navigate(ROUTES.HOME)
-    return null
-  }
+  useEffect(() => {
+    if (!isLoading && !post) navigate(ROUTES.HOME)
+  }, [isLoading, post, navigate])
+
+  if (isLoading || !post) return null
 
   const { author } = post
   const isAuthor = user?._id === author._id
@@ -64,7 +66,6 @@ const PostDetail = () => {
                   postId={post._id}
                   initialDescription={post.description ?? ''}
                   initialImageUrl={post.images?.[0]?.url ?? null}
-                  onSuccess={() => window.location.reload()}
                   postTags={post.tags ?? []}
                 />
               </div>

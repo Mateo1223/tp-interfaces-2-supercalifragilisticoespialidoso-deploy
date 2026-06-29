@@ -17,7 +17,9 @@ interface EditPostPayload {
 }
 
 export const usePost = (id?: string) => {
-  const { data, error, isLoading } = useSWR<Post>(id ? API.POST_BY_ID(id) : null, fetcher)
+  const { data, error, isLoading } = useSWR<Post>(id ? API.POST_BY_ID(id) : null, fetcher, {
+    keepPreviousData: true,
+  })
   const { mutate } = useSWRConfig()
   const { user } = useAuth()
 

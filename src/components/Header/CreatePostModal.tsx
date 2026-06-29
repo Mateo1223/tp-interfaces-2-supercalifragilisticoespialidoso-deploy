@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router'
 import { Link } from '@heroui/react'
 import { usePost } from '../../hooks/usePost.ts'
 import PostFormFields from '../../components/PostFormFields'
-import { ROUTES } from '../../config/routes.ts'
 import FormModalShell from '../../components/FormModalShell'
 import { useModalImageForm } from '../../hooks/useModalImageForm'
 
@@ -16,7 +14,6 @@ const CreatePostModal = ({
   triggerLabel = 'Crear publicación',
   onSuccess,
 }: CreatePostModalProps) => {
-  const navigate = useNavigate()
   const { createPost, isCreating, createError } = usePost()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -30,14 +27,13 @@ const CreatePostModal = ({
     e.preventDefault()
     if (!image) return
 
-    const newPost = await createPost({
+    await createPost({
       description: textValues.description,
       image,
     })
 
     setIsOpen(false)
     onSuccess?.()
-    navigate(ROUTES.POST(newPost._id ?? newPost.id))
   }
 
   return (
