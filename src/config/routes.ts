@@ -6,4 +6,5 @@ export const ROUTES = {
   PROFILE: (userId: string) => `/profile/${userId}`,
   PROFILE_EDIT: '/profile/edit',
   POST_CREATE: '/post/create',
+  REGISTER: '/register',
 } as const
