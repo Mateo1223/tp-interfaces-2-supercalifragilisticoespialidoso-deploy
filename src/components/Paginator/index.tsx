@@ -16,7 +16,7 @@ const Paginator = ({
   totalItems,
   itemsPerPage,
   onPageChange,
-  itemLabel = 'productos',
+  itemLabel = 'posteos',
 }: Props) => {
   const startItem = totalItems === 0 ? 0 : (page - 1) * itemsPerPage + 1
 

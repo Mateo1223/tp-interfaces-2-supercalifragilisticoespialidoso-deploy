@@ -14,7 +14,7 @@ interface RootProps {
 const Root = ({ open, onClose, children }: RootProps) => (
   <div
     className={clsx(
-      'fixed inset-0 z-50 flex flex-col bg-(--background) transition-all duration-300 ease-in-out xl:hidden',
+      'fixed inset-0 z-50 flex flex-col bg-background transition-all duration-300 ease-in-out xl:hidden',
       open
         ? 'opacity-100 translate-y-0 pointer-events-auto'
         : 'opacity-0 -translate-y-4 pointer-events-none',
