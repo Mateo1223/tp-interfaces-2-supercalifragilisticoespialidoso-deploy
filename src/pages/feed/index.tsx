@@ -16,14 +16,14 @@ const Feed = () => {
   return (
     <Main>
       <section className="flex flex-col gap-y-10">
-        <div className="flex flex-col items-center gap-3 py-4 text-center">
+        <div className="flex flex-col items-center gap-2 py-4 text-center">
           <h1 className="text-3xl font-semibold sm:text-4xl">
             {greeting}{' '}
             <span className="inline-block h-12 w-auto align-middle">
               <Logo />
             </span>
           </h1>
-          <p className="text-sm text-accent">Estas son tus publicaciones del día de hoy</p>
+          <p className="text-accent">Estas son tus publicaciones del día de hoy</p>
         </div>
 
         <FeedResults

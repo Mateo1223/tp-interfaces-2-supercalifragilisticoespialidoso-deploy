@@ -28,8 +28,10 @@ const ProfileHeader = ({ user }: ProfileHeaderProps) => {
         />
 
         <div className="flex flex-col items-center gap-4 md:items-start">
-          <ProfileInfo name={user.name} bio={user.bio} />
-          <ProfileStats followers={user.followers ?? []} following={user.following ?? []} />
+          <div className="flex flex-col md:items-start items-center gap-3">
+            <ProfileInfo name={user.name} nickName={user.nickName} bio={user.bio} />
+            <ProfileStats followers={user.followers ?? []} following={user.following ?? []} />
+          </div>
 
           {isInitialized && (
             <ProfileActionButton

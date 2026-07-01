@@ -42,13 +42,13 @@ export const useAuth = () => {
     }
   }
 
-  const login = (email: string, password: string) =>
+  const login = (identifier: string, password: string) =>
     handleRequest(
       () =>
         fetch(API.LOGIN, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({ identifier, password }),
         }),
       'Error al iniciar sesión',
     )
@@ -67,6 +67,7 @@ export const useAuth = () => {
   const logout = () => {
     clearUser()
     setError(null)
+    window.location.reload()
   }
 
   return {

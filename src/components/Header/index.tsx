@@ -43,21 +43,18 @@ const Header = () => {
                   </Link>
                 </li>
               ))}
-
-              {isAuthenticated && (
-                <li>
-                  <CreatePostModal triggerLabel="Crear publicación" />
-                </li>
-              )}
+              <li>
+                <CreatePostModal triggerLabel="Crear publicación" />
+              </li>
             </ul>
           </div>
 
-          {/* Desktop: user menu */}
-          <div className="hidden xl:flex items-center gap-6">{isAuthenticated && <UserMenu />}</div>
+          <div className="hidden xl:flex items-center gap-6">
+            <UserMenu />
+          </div>
 
-          {/* Mobile: user menu + hamburger */}
           <div className="flex xl:hidden items-center gap-4">
-            {isAuthenticated && <UserMenu />}
+            <UserMenu />
             <button onClick={() => setMenuOpen((o) => !o)} aria-label="Abrir menú" className="p-1">
               <Bars width={20} height={20} />
             </button>
