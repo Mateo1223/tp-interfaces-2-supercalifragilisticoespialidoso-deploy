@@ -7,11 +7,13 @@ import { useModalImageForm } from '../../hooks/useModalImageForm'
 
 interface CreatePostModalProps {
   triggerLabel?: string
+  triggerClassName?: string
   onSuccess?: () => void
 }
 
 const CreatePostModal = ({
   triggerLabel = 'Crear publicación',
+  triggerClassName,
   onSuccess,
 }: CreatePostModalProps) => {
   const { createPost, isCreating, createError } = usePost()
@@ -47,7 +49,7 @@ const CreatePostModal = ({
       submitLabel="Publicar"
       trigger={
         <Link
-          className="underline decoration-(--accent) text-(--foreground)"
+          className={triggerClassName ?? 'underline decoration-(--accent) text-(--foreground)'}
           onClick={() => setIsOpen(true)}
         >
           {triggerLabel}

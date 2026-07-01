@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router'
 import clsx from 'clsx'
+import { Chip } from '@heroui/react'
 import { ROUTES } from '../../config/routes'
 import type { Post } from '../../types/post.ts'
 import { formatRelativeDate } from '../../utils/format.ts'
@@ -8,9 +9,16 @@ interface PostCardProps {
   post: Post
 }
 
+const MAX_DESCRIPTION_LENGTH = 80
+
 const PostCard = ({ post }: PostCardProps) => {
   const navigate = useNavigate()
   const { author } = post
+  const description = post.description ?? ''
+  const isTruncated = description.length > MAX_DESCRIPTION_LENGTH
+  const displayDescription = isTruncated
+    ? description.slice(0, MAX_DESCRIPTION_LENGTH).trimEnd() + '...'
+    : description
 
   return (
     <div
@@ -52,12 +60,23 @@ const PostCard = ({ post }: PostCardProps) => {
           />
         </div>
       )}
-      <div className="px-1">
-        <p className="text-sm line-clamp-2 leading-relaxed">
-          {post.description ||
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper augue ex, consequat accumsan elit efficitur in....'}
+      <div className="px-1 flex flex-col gap-2">
+        <p className="text-sm leading-relaxed">
+          {displayDescription}
+          {isTruncated && <span className="font-bold"> Ver mas</span>}
         </p>
-        <button className="text-sm font-bold mt-1">Ver mas</button>
+        {post.tags?.length > 0 && (
+          <div className="flex flex-wrap gap-1">
+            {post.tags.map((tag) => (
+              <Chip key={tag._id} size="sm">
+                {tag.name}
+              </Chip>
+            ))}
+          </div>
+        )}
+        <span className="text-xs text-gray-400">
+          {post.comments?.length ?? 0} comentario{(post.comments?.length ?? 0) !== 1 ? 's' : ''}
+        </span>
       </div>
     </div>
   )

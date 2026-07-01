@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router'
 import AppLayout from './layouts/AppLayout'
+import LoginRegisterLayout from './layouts/LoginRegisterLayout'
 import Contact from './pages/contact'
 import Feed from './pages/feed'
 import PostDetail from './pages/post-detail'
@@ -10,11 +11,16 @@ import ProtectedRoute from './hocs/withAuth'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <AppLayout />,
+    element: <LoginRegisterLayout />,
     children: [
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
+    ],
+  },
+  {
+    path: '/',
+    element: <AppLayout />,
+    children: [
       {
         element: <ProtectedRoute />,
         children: [
