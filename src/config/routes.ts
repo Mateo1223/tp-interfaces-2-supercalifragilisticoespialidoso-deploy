@@ -9,4 +9,5 @@ export const ROUTES = {
   PROFILE_EDIT: '/profile/edit',
   POST_CREATE: '/post/create',
   REGISTER: '/register',
+  LOGIN: '/login',
 } as const

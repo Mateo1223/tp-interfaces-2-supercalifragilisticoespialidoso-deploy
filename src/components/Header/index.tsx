@@ -76,9 +76,13 @@ const Header = () => {
           ))}
 
           {isAuthenticated && (
-            <div onClick={() => setMenuOpen(false)} className="px-4 py-2">
-              <CreatePostModal triggerLabel="Crear publicación" />
-            </div>
+            <li>
+              <CreatePostModal
+                triggerLabel="Crear publicación"
+                triggerClassName="py-3 text-lg block w-full border-b border-current/10 no-underline underline decoration-(--accent) text-(--foreground)"
+                onSuccess={() => setMenuOpen(false)}
+              />
+            </li>
           )}
         </MobileMenu.Nav>
       </MobileMenu>

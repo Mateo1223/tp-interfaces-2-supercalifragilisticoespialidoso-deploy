@@ -3,6 +3,7 @@ import { usePageTitle } from '../../hooks/usePageTitle.ts'
 import { useAuth } from '../../hooks/useAuth'
 import { Button, Input, Label, TextField } from '@heroui/react'
 import { useNavigate } from 'react-router'
+import { ROUTES } from '../../config/routes'
 import { toast } from 'sonner'
 import AuthLayout from '../../components/AuthLayout'
 import Logo from '../../components/Logo/index.tsx'
@@ -85,6 +86,15 @@ const Register = () => {
 
           <Button type="submit" variant="primary" fullWidth isDisabled={isLoading}>
             {isLoading ? 'Creando cuenta...' : 'Crear cuenta'}
+          </Button>
+
+          <Button
+            variant="outline"
+            fullWidth
+            className="rounded-full border-accent text-accent"
+            onClick={() => navigate(ROUTES.LOGIN)}
+          >
+            Iniciar sesión
           </Button>
         </form>
       </div>

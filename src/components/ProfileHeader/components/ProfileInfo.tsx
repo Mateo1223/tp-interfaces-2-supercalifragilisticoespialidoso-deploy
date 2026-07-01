@@ -11,7 +11,7 @@ const ProfileInfo = ({ name, nickName, bio }: ProfileInfoProps) => {
         <h1 className="text-2xl font-semibold">{name}</h1>
         {nickName && <p className="text-sm text-gray-500">@{nickName}</p>}
       </div>
-      <p>{bio}</p>
+      {bio && bio?.length > 0 && <p>{bio}</p>}
     </div>
   )
 }

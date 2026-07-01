@@ -27,7 +27,7 @@ export const useAuth = () => {
       const data = await response.json().catch(() => ({}))
 
       if (!response.ok) {
-        throw new Error(data.message ?? errorMessage)
+        throw new Error(data.error ?? data.message ?? errorMessage)
       }
 
       const userData = normalizeUser(data.user)

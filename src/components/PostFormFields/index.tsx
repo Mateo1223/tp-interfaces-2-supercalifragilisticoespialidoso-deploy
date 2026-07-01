@@ -97,24 +97,26 @@ const PostFormFields = ({
               </div>
             </div>
 
-            <div>
-              <h3 className="mb-2 text-sm font-medium">Agregar tags</h3>
-              <div className="flex flex-wrap gap-2">
-                {tags
-                  .filter((tag) => !selectedTagIds.has(tag._id))
-                  .map((tag) => (
-                    <Button
-                      key={tag._id}
-                      size="sm"
-                      variant="outline"
-                      isDisabled={isSubmitting}
-                      onClick={() => addTagToPost(tag._id)}
-                    >
-                      <Plus className="h-4 w-4" /> {tag.name}
-                    </Button>
-                  ))}
+            {tags.filter((tag) => !selectedTagIds.has(tag._id)).length > 0 && (
+              <div>
+                <h3 className="mb-2 text-sm font-medium">Agregar tags</h3>
+                <div className="flex flex-wrap gap-2">
+                  {tags
+                    .filter((tag) => !selectedTagIds.has(tag._id))
+                    .map((tag) => (
+                      <Button
+                        key={tag._id}
+                        size="sm"
+                        variant="outline"
+                        isDisabled={isSubmitting}
+                        onClick={() => addTagToPost(tag._id)}
+                      >
+                        <Plus className="h-4 w-4" /> {tag.name}
+                      </Button>
+                    ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         ))}
     </>

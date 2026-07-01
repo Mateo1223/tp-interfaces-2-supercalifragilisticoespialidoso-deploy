@@ -24,7 +24,7 @@ const ProfileHeader = ({ user }: ProfileHeaderProps) => {
         <img
           src={user.profileImage}
           alt={user.name}
-          className="h-48 w-48 rounded-full object-cover"
+          className="h-48 w-48 rounded-full object-cover dark:brightness-75"
         />
 
         <div className="flex flex-col items-center gap-4 md:items-start">
